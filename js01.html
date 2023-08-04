@@ -19,6 +19,22 @@
     <p class="data" hidden id="job">
        I am a Web Mapping student. 
     </p>
+
+    <script>
+        // $("p") <-- this will reference all of the <p> tags
+        // $("#job") <-- this will reference all "#job" id's
+        // $(".data") <-- this will reference all ".data" classes 
+
+        // use jQuery to listen for a button click
+        // toggle the hidden job message 
+
+        $("button#job").click(
+                function() {
+                    $("p#job").toggle();
+                }
+            );
+        
+    </script>
     
     <p> I am a <sup>student</sup> at <em>Dartmouth College</em>.</p>
     <p> I am an <strong>English</strong> major with a minor in International Studies.</p>
