@@ -30,10 +30,13 @@
 
         $("button#job").click(
                 function() {
-                    $("p#job").show();
+                    $("p#job").toggle();
                 }
             );
-        
+        $("h3").hover(
+                function() {
+                    console.log("h3 hover;");
+            });
     </script>
     
     <p> I am a <sup>student</sup> at <em>Dartmouth College</em>.</p>
