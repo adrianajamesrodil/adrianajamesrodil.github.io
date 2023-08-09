@@ -1,4 +1,4 @@
-{ var ct_geojson = 
+var ct_geojson = {
 "type": "FeatureCollection",
 "name": "NH_Historic_and_Cultural_Features_(CT_River)",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -160,5 +160,4 @@
 { "type": "Feature", "properties": { "FID": 154, "AREA": 0, "PERIMETER": 0, "HISCR_": 155, "HISCR_ID": 155, "NAME": "Edgerton Property", "SOURCE": "gps", "PTTYPE": "REC", "PTTYPE2": " ", "TOWN": "HANOVER", "COMMENT": " ", "F_POLYGONI": 0, "F_SCALE": 1, "F_ANGLE": 0 }, "geometry": { "type": "Point", "coordinates": [ -72.298016147445324, 43.700205601496826 ] } },
 { "type": "Feature", "properties": { "FID": 155, "AREA": 0, "PERIMETER": 0, "HISCR_": 156, "HISCR_ID": 156, "NAME": "South Esker Park", "SOURCE": "gps", "PTTYPE": "REC", "PTTYPE2": " ", "TOWN": "HANOVER", "COMMENT": " ", "F_POLYGONI": 0, "F_SCALE": 1, "F_ANGLE": 0 }, "geometry": { "type": "Point", "coordinates": [ -72.290174331817099, 43.694844048278711 ] } },
 { "type": "Feature", "properties": { "FID": 156, "AREA": 0, "PERIMETER": 0, "HISCR_": 157, "HISCR_ID": 157, "NAME": "Chambers Memorial Park", "SOURCE": "gps", "PTTYPE": "HIS", "PTTYPE2": "REC", "TOWN": "LEBENON", "COMMENT": "local identification", "F_POLYGONI": 0, "F_SCALE": 1, "F_ANGLE": 0 }, "geometry": { "type": "Point", "coordinates": [ -72.298456747764817, 43.689093647398899 ] } }
-]
-}
+]}
