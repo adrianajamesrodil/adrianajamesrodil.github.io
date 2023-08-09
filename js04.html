@@ -33,7 +33,11 @@
             layers: [OpenStreetMap_HOT]
           })
 
-        L.geoJson(features1_geojson).addTo(map);
+        L.geoJson(features1_geojson,
+                  { color: "blue",
+                    weight: 5, 
+                    opacity: 1
+                  }).addTo(map);
 
         
       }
