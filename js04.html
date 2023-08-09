@@ -27,34 +27,36 @@
 
       
       function initialize() {
-          var map = L.map('map', {
+        var map = L.map('map', {
             center: [43.7034, -72.2887 ],
             zoom: 15, 
             layers: [OpenStreetMap_HOT]
           })
 
+
         L.geoJson(features1_geojson,
-                  { color: "blue",
-                    weight: 3, 
-                    opacity: .5
-                    onEachFeature: function(feature, layer) {
-                          layer.bindPopup("<b>Feature Name: " + 
-                          feature.properties.NAME + "</b>");
-                      }
+                  { color: "#ee87ff",
+                    weight: 3,
+                   opacity: .5,
+                   onEachFeature: function(feature, layer) {
+                     layer.bindPopup("<b>Feature Name: " +
+                      feature.properties.NAME + "</b>");
+                   }
                   }).addTo(map);
-
         L.geoJson(features2_geojson,
-                  { color: "blue",
-                    weight: 3, 
-                    opacity: .5
+                  { color: "#ee87ff",
+                    weight: 3,
+                    opacity: .5,
                     onEachFeature: function(feature, layer) {
-                          layer.bindPopup("<b>Feature Name: " + 
-                          feature.properties.NAME + "</b>");
+                      layer.bindPopup("<b>Feature Name: " +
+                      feature.properties.NAME + "</b>");
                     }
-                    }).addTo(map);
-
+                  }).addTo(map);
         
       }
+          
+
+       
     </script>
   </head>
   <body onload="initialize()">
