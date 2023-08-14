@@ -40,10 +40,10 @@
                    opacity: .5,
                    onEachFeature: function(feature, layer) {
                      layer.bindPopup("<b>Feature Name: " +
-                      feature.properties.NAME + "</b><br>" + "Avg. Slope: " +
-                      feature.properties.Avg_Slope + "<br>" + 
-                      "Max. Slope: " +
-                      features.properties.Max_Slope);
+                      feature.properties.NAME + "</b><br>" + "Town: " +
+                      feature.properties.TOWN + "<br>" + 
+                      "Coordinates: " +
+                      features.properties.coordinates);
                    }
                   }).addTo(map);
         L.geoJson(features2_geojson,
