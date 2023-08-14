@@ -29,9 +29,6 @@
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
         });
 
-
-      
-      
       
       function initialize() {
         var map = L.map('map', {
@@ -42,15 +39,12 @@
 
 
       bayLayer = L.geoJson(bay_geojson,
-                           { color: "#ee8ff",
-                            weight: 3,
-                            opacity: .5
-                            onEachFeature: function(feature, layer) {
-                              layer.bindPopup("<b>Shape Length: " +
-                              feature.properties.Shape_Length + "</b><br>" + "Shape Area: " +
-                              feature.properties.Shape_Area);
-                            }
+                           {onEachFeature: function(feature, layer) {
+                             layer.bindPopup("<b>Shape Length " +
+                             feature.properties.Shape_Length + "</br>")
+                           }
                            }).addTo(map);
+      
       features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
                     weight: 3,
