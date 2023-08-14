@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
    crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
    
     <style>
       #map { height: 400px; width: 700px; }
@@ -25,6 +26,7 @@
       var features1Layer;
       var features2Layer;
       var bayLayer;
+      var bayVisible = false;
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
         { maxZoom: 19,
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
@@ -63,7 +65,7 @@
                              layer.bindPopup("<b>Acres " +
                              feature.properties.ACRES + "</br>")
                   }
-                  }).addTo(map);
+                  });
       
       features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
@@ -86,10 +88,16 @@
                     }
                   }).addTo(map);
         
-      }
-          
-
-       
+      $("#toggleBay").click( function() {
+        if (bayVisible) {
+            bayVisible = false;
+            bayLayer.removeFrom(map);
+        } else {
+            bayVisible = true;
+            bayLayer.addTo(map);
+        }
+      })
+    }
     </script>
   </head>
   <body onload="initialize()">
