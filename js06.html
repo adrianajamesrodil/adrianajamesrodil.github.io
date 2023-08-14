@@ -102,7 +102,7 @@
                     }
                   }).addTo(map);
 	      
-		var bayLayer = L.geoJson(responseJSON,
+		var bayLayer = L.geoJson(response.responseJSON,
 	                  { style: lineSymbology,
 	                    onEachFeature: function(feature, layer) {
 	                             layer.bindPopup("<b>Acres " +
