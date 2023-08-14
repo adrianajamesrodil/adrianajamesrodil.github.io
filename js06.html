@@ -20,14 +20,13 @@
 
     <script src="features1.geojson"></script> 
     <script src="features2.geojson"></script>
-    <script src="bay.geojson"></script>
+    
     
     
     <script>
-      var features1Layer;
       var features2Layer;
       var bayLayer;
-      var bayVisible = false;
+      var bayVisible = true;
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
         { maxZoom: 19,
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
@@ -68,18 +67,17 @@
           var baseMaps = {"OSM HOT" : OpenStreetMap_HOT,
                          "OSM DE" : OpenStreetMap_DE }
           L.control.layers(baseMaps).addTo(map);
-          
 
+	var response = $.ajax({
+		url: "bay2.geojson",
+		dataType: "json",
+		success: console.log("bay data loaded!"),
+		error: function(xhr) {
+			alert(xhr.statusText);
+		}
+	});
 
-      bayLayer = L.geoJson(bay_geojson,
-                  {style: lineSymbology,
-                    onEachFeature: function(feature, layer) {
-                             layer.bindPopup("<b>Acres " +
-                             feature.properties.ACRES + "</br>")
-                  }
-                  });
-      
-      features1Layer = L.geoJson(features1_geojson,
+	features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
                     weight: 3,
                    opacity: .5,
@@ -99,24 +97,38 @@
                       feature.properties.TOWN);
                     }
                   }).addTo(map);
-        
-      $("#toggleBay").click( function() {
-        if (bayVisible) {
-            bayVisible = false;
-            bayLayer.removeFrom(map);
-        } else {
-            bayVisible = true;
-            bayLayer.addTo(map);
-        }
-      })
-    }
+	
+	
+	$.when(response).done(function() {
+		
+	
+
+	      var bayLayer = L.geoJson(responseJSON,
+	                  {style: lineSymbology,
+	                    onEachFeature: function(feature, layer) {
+	                             layer.bindPopup("<b>Acres " +
+	                             feature.properties.ACRES + "</br>")
+	                  }
+	                  });
+	      #("toggleBay").show();
+	      $("#toggleBay").click( function() {
+	        if (bayVisible) {
+	            bayVisible = false;
+	            bayLayer.removeFrom(map);
+	        } else {
+	            bayVisible = true;
+	            bayLayer.addTo(map);
+	        }
+	      })
+	   })
+	}
     </script>
   </head>
   <body onload="initialize()">
     <h1>Hello Campus!</h1>
     <div id="map"></div>
     <div id="buttons">
-      <button id="toggleBay">Toggle the Bay Layer.</button>
+      <button id="toggleBay" hidden>Toggle the Bay Layer.</button>
       </div>
   </body>
 </html>
