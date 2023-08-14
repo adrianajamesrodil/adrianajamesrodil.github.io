@@ -33,10 +33,10 @@
       function lineSymbology(feature) {
         var acre = feature.properties.ACRES;
         var lineWidth = 2;
-        var lineColor = "#a1d76a;"
+        var lineColor = "#a1d76a";
 
         if (acre > 15.0) { lineColor = "#7777777"; lineWidth = 4; }
-        if (acre > 30.0) { lineColor = "$e9a3c9"; lineWidth = 6; }
+        if (acre > 30.0) { lineColor = "#e9a3c9"; lineWidth = 6; }
 
         return {
           color: lineColor,
