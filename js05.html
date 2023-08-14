@@ -27,6 +27,9 @@
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
         });
 
+
+      
+      
       
       function initialize() {
         var map = L.map('map', {
@@ -43,9 +46,7 @@
                    onEachFeature: function(feature, layer) {
                      layer.bindPopup("<b>Feature Name: " +
                       feature.properties.NAME + "</b><br>" + "Town: " +
-                      feature.properties.TOWN + "<br>" + 
-                      "Coordinates: " +
-                      feature.properties.coordinates);
+                      feature.properties.TOWN);
                    }
                   }).addTo(map);
         features2Layer = L.geoJson(features2_geojson,
@@ -54,10 +55,8 @@
                     opacity: .5,
                     onEachFeature: function(feature, layer) {
                       layer.bindPopup("<b>Feature Name: " +
-                      feature.properties.NAME + "</b><br>" + "Town: " +
-                      feature.properties.TOWN + "<br>" + 
-                      "Coordinates: " +
-                      feature.properties.coordinates);
+                      feature.properties.RESNAME + "</b><br>" + "Town: " +
+                      feature.properties.TOWN);
                     }
                   }).addTo(map);
         
