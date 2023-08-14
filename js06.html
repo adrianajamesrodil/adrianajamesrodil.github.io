@@ -14,7 +14,7 @@
     <style>
       #map { height: 400px; width: 500px; }
       html, body {height: 100%; margin: 0; padding: 0; }
-      #buttons { padding: 10px; background: #f3d1c9; }
+      #button { padding: 10px; background: #f3d1c9; }
     </style>
 
 
@@ -52,8 +52,8 @@
           color: lineColor,
           weight: lineWidth,
           opacity: 1
-        };
-      }  
+        }
+      };
 
       
 
@@ -76,8 +76,11 @@
 			alert(xhr.statusText);
 		}
 	});
+	
+	
+	$.when(response).done(function() {
 
-	features1Layer = L.geoJson(features1_geojson,
+		features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
                     weight: 3,
                    opacity: .5,
@@ -87,7 +90,8 @@
                       feature.properties.TOWN);
                    }
                   }).addTo(map);
-        features2Layer = L.geoJson(features2_geojson,
+        
+		features2Layer = L.geoJson(features2_geojson,
                   { color: "#ee87ff",
                     weight: 3,
                     opacity: .5,
@@ -97,14 +101,9 @@
                       feature.properties.TOWN);
                     }
                   }).addTo(map);
-	
-	
-	$.when(response).done(function() {
-		
-	
-
-	      var bayLayer = L.geoJson(responseJSON,
-	                  {style: lineSymbology,
+	      
+		var bayLayer = L.geoJson(responseJSON,
+	                  { style: lineSymbology,
 	                    onEachFeature: function(feature, layer) {
 	                             layer.bindPopup("<b>Acres " +
 	                             feature.properties.ACRES + "</br>")
@@ -127,7 +126,7 @@
   <body onload="initialize()">
     <h1>Hello Campus!</h1>
     <div id="map"></div>
-    <div id="buttons">
+    <div id="button">
       <button id="toggleBay" hidden>Toggle the Bay Layer.</button>
       </div>
   </body>
