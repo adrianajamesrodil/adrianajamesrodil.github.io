@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello Campus!</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+   crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    
+   
+    <style>
+      #map { height: 400px; width: 500px; }
+      html, body {height: 100%; margin: 0; padding: 0; }
+      #buttons { padding: 10px; background: #f3d1c9; }
+    </style>
+
+
+    <script src="features1.geojson"></script> 
+    <script src="features2.geojson"></script>
+    <script src="bay.geojson"></script>
+    
+    
+    <script>
+      var features1Layer;
+      var features2Layer;
+      var bayLayer;
+      var bayVisible = false;
+      var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        { maxZoom: 19,
+        attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
+        });
+      var OpenStreetMap_DE = L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	});
+        
+
+
+
+      
+      function lineSymbology(feature) {
+        var acre = feature.properties.ACRES;
+        var lineWidth = 2;
+        var lineColor = "#a1d76a";
+
+        if (acre > 15.0) { lineColor = "#7777777"; lineWidth = 4; }
+        if (acre > 30.0) { lineColor = "#e9a3c9"; lineWidth = 6; }
+
+        return {
+          color: lineColor,
+          weight: lineWidth,
+          opacity: 1
+        };
+      }  
+
+      
+
+      
+      function initialize() {
+        var map = L.map('map', {
+            center: [43.7034, -72.2887 ],
+            zoom: 15
+          });
+
+          var baseMaps = {"OSM HOT" : OpenStreetMap_HOT,
+                         "OSM DE" : OpenStreetMap_DE }
+          L.control.layers(baseMaps).addTo(map);
+          
+
+
+      bayLayer = L.geoJson(bay_geojson,
+                  {style: lineSymbology,
+                    onEachFeature: function(feature, layer) {
+                             layer.bindPopup("<b>Acres " +
+                             feature.properties.ACRES + "</br>")
+                  }
+                  });
+      
+      features1Layer = L.geoJson(features1_geojson,
+                  { color: "#ee87ff",
+                    weight: 3,
+                   opacity: .5,
+                   onEachFeature: function(feature, layer) {
+                     layer.bindPopup("<b>Feature Name: " +
+                      feature.properties.NAME + "</b><br>" + "Town: " +
+                      feature.properties.TOWN);
+                   }
+                  }).addTo(map);
+        features2Layer = L.geoJson(features2_geojson,
+                  { color: "#ee87ff",
+                    weight: 3,
+                    opacity: .5,
+                    onEachFeature: function(feature, layer) {
+                      layer.bindPopup("<b>Feature Name: " +
+                      feature.properties.RESNAME + "</b><br>" + "Town: " +
+                      feature.properties.TOWN);
+                    }
+                  }).addTo(map);
+        
+      $("#toggleBay").click( function() {
+        if (bayVisible) {
+            bayVisible = false;
+            bayLayer.removeFrom(map);
+        } else {
+            bayVisible = true;
+            bayLayer.addTo(map);
+        }
+      })
+    }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <h1>Hello Campus!</h1>
+    <div id="map"></div>
+    <div id="buttons">
+      <button id="toggleBay">Toggle the Bay Layer.</button>
+      </div>
+  </body>
+</html>
