@@ -41,7 +41,7 @@
                    onEachFeature: function(feature, layer) {
                      layer.bindPopup("<b>Feature Name: " +
                       feature.properties.NAME + "</b><br>" + "Avg. Slope: " +
-                      features.properties.Avg_Slope + "<br>" + 
+                      feature.properties.Avg_Slope + "<br>" + 
                       "Max. Slope: " +
                       features.properties.Max_Slope);
                    }
