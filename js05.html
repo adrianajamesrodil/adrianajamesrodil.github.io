@@ -17,13 +17,11 @@
 
     <script src="features1.geojson"></script> 
     <script src="features2.geojson"></script>
-    <script src="rivers.geojson"></script>
     
     
     <script>
       var features1Layer;
       var features2Layer;
-      var riversLayer;
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
         { maxZoom: 19,
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
@@ -41,16 +39,6 @@
           })
 
 
-      riversLayer = L.geoJson(rivers_geojson,
-                             { color: "#ee87ff",
-                     weight: 3,
-                     opacity: .5,
-                     onEachFeature: function(feature, layer) {
-                     layer.bindPopup("<b>River Name: " +
-                      feature.properties.River_Name + "</b><br>" + "Length: " +
-                      feature.properties.LENGTH_MI);
-                   }
-                  }).addTo(map);
       features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
                     weight: 3,
