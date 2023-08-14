@@ -29,6 +29,24 @@
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
         });
 
+
+      function lineSymbology(feature) {
+        var acre = feature.properties.ACRES;
+        var lineWidth = 2;
+        var lineColor = "#a1d76a;"
+
+        if (acre > 15.0) { lineColor = "#7777777"; lineWidth = 4; }
+        if (acre > 30.0) { lineColor = "$e9a3c9"; lineWidth = 6; }
+
+        return {
+          color: lineColor,
+          weight: lineWidth,
+          opacity: 1
+        };
+      }  
+
+      
+
       
       function initialize() {
         var map = L.map('map', {
@@ -39,11 +57,12 @@
 
 
       bayLayer = L.geoJson(bay_geojson,
-                           {onEachFeature: function(feature, layer) {
-                             layer.bindPopup("<b>Shape Length " +
-                             feature.properties.Shape_Length + "</br>")
-                           }
-                           }).addTo(map);
+                  {style: lineSymbology,
+                    onEachFeature: function(feature, layer) {
+                             layer.bindPopup("<b>Acres " +
+                             feature.properties.ACRES + "</br>")
+                  }
+                  }).addTo(map);
       
       features1Layer = L.geoJson(features1_geojson,
                   { color: "#ee87ff",
