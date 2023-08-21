@@ -42,7 +42,7 @@
     </style>
 
 
-    <script src="municipalities.json"></script> 
+    <script src="roads.json"></script> 
     
     
     <script>
@@ -55,19 +55,19 @@
       
       function initialize() {
         var map = L.map('map', {
-            center: [43.7034, -72.2887 ],
+            center: [18.2208, -66.5901 ],
             zoom: 15, 
             layers: [OpenStreetMap_HOT]
           })
 
 
-        L.json(municipalities_json,
+        L.json(roads_json,
                   { color: "#ee87ff",
                     weight: 3,
                    opacity: .5,
                    onEachFeature: function(feature, layer) {
-                     layer.bindPopup("<b>Municipality Name: " +
-                      feature.properties.NAME + "</b>");
+                     layer.bindPopup("<b>Name: " +
+                      feature.properties.name + "</b>");
                    }
                   }).addTo(map);
       }
