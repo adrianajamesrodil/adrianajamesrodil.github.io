@@ -1,0 +1,15 @@
+{
+    "created": "2017-09-06T15:20:09.071086",
+    "description": "ESRI Shapefile",
+    "format": "SHP",
+    "download_url": "https://export.hotosm.org/downloads/a3d63f7f-70f1-402f-b867-3564430a9317/hotosm_pri_points_of_interest_points_shp.zip",
+    "id": "bf241cfd-f4b1-4d3f-80bb-a58da70aaf9c",
+    "last_modified": "2020-07-09T22:03:11.107865",
+    "metadata_modified": "2023-03-03T21:35:32.948158",
+    "microdata": false,
+    "dataset_id": "9bda31da-5e7a-4d3e-b22e-cb0f7f210a6b",
+    "resource_type": "api",
+    "name": "hotosm_pri_points_of_interest_points_shp.zip",
+    "mimetype": null,
+    "size": "0.0B"
+}
