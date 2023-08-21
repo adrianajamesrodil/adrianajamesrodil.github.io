@@ -1,4 +1,4 @@
-var points_js = {
+var points_json = {
     "created": "2017-09-06T15:20:09.071086",
     "description": "ESRI Shapefile",
     "format": "SHP",
