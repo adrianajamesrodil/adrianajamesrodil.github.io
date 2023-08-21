@@ -2,7 +2,39 @@
 <html>
 <head>
     <title>Puerto Rico Data</title>
-    <link rel="stylesheet" href= "style06.css">
+    <link rel="stylesheet" href="style06.css">
+
+    <style>
+        /* Add padding to the body */
+        body {
+            padding: 20px;
+        }
+
+        /* Add margins to the header and paragraphs */
+        h1, h3, p {
+            margin-bottom: 10px;
+        }
+
+        /* Add margin to the image */
+        img {
+            margin: 10px 0;
+        }
+
+        /* Add margin to the link */
+        a {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* Add padding to the interactive map */
+        #map {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+
 </head>
 <!-- This is my Story Map Presentation -->
 <body>
@@ -10,44 +42,38 @@
     <h1>About Puerto Rico</h1>
     
     <a href="https://storymaps.arcgis.com/stories/450a9a91dc1f42508223db8edc140fa4">This is a link to my Story Map about public beach inaccessibility in Puerto Rico.</a>
-    <p></p>
+
+    <!-- Add margin to the image -->
     <img src="PR.jpg" style="width: 30%; height: 200px">
-  
+
     <h3>U.S. Census Bureau Quick Facts</h3>
-    <p> <strong>Population Estimates, July 1, 2022</strong></p>
-    <p> Population: 3,221,789</p>
-    <p> Households: 1,196,790</p>
-    <p> Households with a computer: 75.9%</p>
-    <p> Households with a broadband Internet subscription: 68.0%</p>
-    <p> High school graduate or higher, percent of persons age 25+: 78.4%</p>
-    <p> Bachelor's degree or higher, percent of persons age 25 years+: 27.4%</p>
-    <p> Persons in poverty: 40.5%</p>
-
-
+    <!-- Add margin to the paragraphs -->
+    <p><strong>Population Estimates, July 1, 2022</strong></p>
+    <p>Population: 3,221,789</p>
+    <p>Households: 1,196,790</p>
+    <p>Households with a computer: 75.9%</p>
+    <p>Households with a broadband Internet subscription: 68.0%</p>
+    <p>High school graduate or higher, percent of persons age 25+: 78.4%</p>
+    <p>Bachelor's degree or higher, percent of persons age 25 years+: 27.4%</p>
+    <p>Persons in poverty: 40.5%</p>
 
     <!-- An interactive leaflet web map -->
     <h3>Interactive Web Map</h3>
     
-    <head>
+    <div id="map"></div>
+
+    <!-- JavaScript and Leaflet libraries -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-   crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-   crossorigin=""></script>
-   
-    <style>
-      #map { height: 400px; width: 700px; }
-      html, body {height: 100%; margin: 0; padding: 0; }
-    </style>
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
 
-
-    <script src="points.json"></script> 
-    
-    
+    <!-- JavaScript scripts and JSON data here -->
+    <script src="points.json"></script>
     <script>
-
-      var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
         { maxZoom: 19,
         attribution: '&copy; <a href="http:www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.osm.org">HOT OSM</a>'
         });
@@ -71,16 +97,7 @@
                    }
                   }).addTo(map);
       }
-          
-
-       
     </script>
-  </head>
-  <body onload="initialize()">
-    <div id="map"></div>
-  </body>
-    
-
 </body>
-
 </html>
+
