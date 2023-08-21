@@ -32,6 +32,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            height: 500px;
         }
     </style>
 
@@ -73,7 +74,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     <!-- JavaScript scripts and geoJson data here -->
-    <script src="points.json"></script>
+    <script src="prplaces.geojson"></script>
     <script>
 
     $(document).ready(function(){
@@ -89,7 +90,7 @@
           })
 
 
-        L.geoJson(prplaces_geojson,
+        L.geoJson(places,
                   { color: "#ee87ff",
                     weight: 3,
                    opacity: .5,
