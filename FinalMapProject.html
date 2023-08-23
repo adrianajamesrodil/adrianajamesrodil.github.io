@@ -4,6 +4,10 @@
     <title>Puerto Rico Data</title>
     <link rel="stylesheet" href="style06.css">
 
+    <script src="leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="MarkerCluster.css">
+    <link rel="stylesheet" href="MarkerCluster.Default.css">
+
     <style>
         body {
             padding: 20px;
@@ -98,7 +102,7 @@
           })
 
 
-        L.geoJson(education_geojson,
+    var schools = L.geoJson(education_geojson,
                   { color: "#ee87ff",
                     weight: 3,
                    opacity: .5,
@@ -107,6 +111,10 @@
                       feature.properties.name + "</b>");
                    }
                   }).addTo(map);
+
+    var markers = L.markerClusterGroup();
+    markers.addLayer(schools_layer);
+   
     })
     </script>
 
