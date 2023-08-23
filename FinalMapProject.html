@@ -110,10 +110,10 @@
                      layer.bindPopup("<b>Name: " +
                       feature.properties.name + "</b>");
                    }
-                  }).addTo(map);
+                  });
 
     var markers = L.markerClusterGroup();
-    markers.addLayer(schools);
+    markers.addLayer(schools).addTo(map);
    
     })
     </script>
